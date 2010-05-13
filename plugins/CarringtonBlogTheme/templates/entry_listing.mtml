@@ -1,0 +1,44 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en-US">
+<$mt:Include module="HTML Header"$>
+     <body>
+          <div id="page">
+               <div id="top">
+                    <a class="accessibility" href="#content">Skip to content</a>
+               </div>
+               <hr class="lofi" />
+<$mt:Include module="Header"$>
+<$mt:Include module="Subheader"$>
+               <hr class="lofi" />
+               <div id="main" class="section">
+                    <div class="wrapper">
+                         <div id="content">
+                              <h1 class="page-title">
+                                   <$mt:ArchiveTypeLabel$> Archives: <a href=
+                                   "<$mt:ArchiveLink$>"><$mt:ArchiveTitle$></a>
+                              </h1>
+                              <div class="description"></div>
+                              <ol class="archive">
+				<mt:Entries>
+<$mt:Include module="Entry Details (Listing)"$>
+				</mt:Entries>
+                              </ol><!--.archive-->
+                              <div class="pagination">
+                                   <span class="next"><a href=
+                                   "http://www.codemonkeyramblings.com/wordpress/?cat=1&amp;paged=2">
+                                   Next &raquo;</a></span>
+                              </div>
+                         </div>
+                         <hr class="lofi" />
+<$mt:Include module="Sidebar"$>
+                         <div class="clear"></div>
+                    </div><!-- .wrapper -->
+               </div><!-- #main -->
+               <hr class="lofi" />
+<$mt:Include module="Footer"$>
+          </div><!--#page-->
+     </body>
+</html>
+
+

@@ -1,0 +1,92 @@
+                         <div id="comments">
+                              <div class="rule-major">
+                                   <hr />
+                              </div>
+				
+				<$mt:EntryTrackbackCount setvar="tbcount"$>
+				<$mt:EntryCommentCount setvar="ccount"$>
+				<$mt:var name="ccount" op="+" value="$tbcount" setvar="ccount"$>
+                              <h2 class="h1 comments-title"><$mt:var name="ccount"$> Responses</h2>
+
+                              <p>Stay in touch with the conversation, subscribe to the
+                              <a class="feed" rel="alternate" href=
+                              "http://www.codemonkeyramblings.com/wordpress/?feed=rss2&amp;p=1907">
+                              <acronym title="Really Simple Syndication">RSS</acronym>
+                              feed for comments on this post</a>.</p>
+
+                              <ol class="commentlist hfeed">
+                              <mt:Comments>
+                                   <li class="li-comment" id="li-comment-<$mt:CommentID$>">
+                                        <div class="div-comment" id="div-comment-<$mt:CommentID$>">
+                                             <div id="comment-<$mt:CommentID$>" class=
+                                             "comment even thread-even depth-1 hentry">
+                                                  <address class=
+                                                  "vcard author entry-title comment-author">
+                                                  <span class="photo avatar"><img alt=''
+                                                       src=
+                                                       'http://0.gravatar.com/avatar/cd78d1a6d2ac9be107a49198e268eb8d?s=48&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G'
+                                                       class='avatar avatar-48 photo'
+                                                       height='48' width='48' /></span>
+                                                       <cite class="fn"><a href=
+                                                       '<$mt:CommentAuthorLink$>'
+                                                       rel='external nofollow' class=
+                                                       'url'><$mt:CommentAuthor$></a></cite>
+                                                       <span class="says">says</span>
+                                                  </address><!--.vcard-->
+
+                                                  <div class="entry-content comment-content">
+                                                       <$mt:CommentBody$>
+                                                  </div><!--.entry-content-->
+
+                                                  <div class="clear"></div>
+
+                                                  <div class=
+                                                  "comment-meta commentmetadata small">
+                                                       <span class=
+                                                       "date comment-date"><abbr class=
+                                                       "published" title=
+                                                       "<$mt:CommentDate$>"><$mt:CommentDate format="%B %d, %Y,"$>
+                                                       <a title=
+                                                       "Permanent link to this comment"
+                                                       rel="bookmark" href=
+                                                       "<$mt:EntryPermalink$>#comment-<$mt:CommentID$>">
+                                                       <$mt:CommentDate format="%l:%M"$></a></abbr></span> 
+                                                       <!--.date-->
+                                                  </div>
+                                             </div><!--.comment-->
+                                        </div>
+                                   </li>
+                              </mt:Comments>
+                              </ol>
+
+                              <p class="comment-pagination"></p>
+				<mt:If tag="EntryTrackbackCount" gt="0">
+                              <h3 class="pings">Continuing the Discussion</h3>
+
+                              <ol class="pinglist commentlist hfeed">
+                              <mt:Pings>
+                                   <li class="li-comment">
+                                        <div id="div-ping-<$mt:PingID$>" class=
+                                        "trackback odd alt thread-odd thread-alt depth-1 ping hentry">
+                                        <cite class=
+                                             "vcard author fn entry-title"><a href='<$mt:PingURL$>'
+                                             rel='external nofollow' class='url'><$mt:PingBlogName$></a></cite>
+                                             <span class=
+                                             "linked-to-this-post alt-font">linked to
+                                             this post</span> <span class=
+                                             "date alt-font"><span class="on">on</span>
+                                             <abbr class="published" title=
+                                             "%Y-%m-%-dT%H:%M:%S"><$mt:PingDate format="%B %d, %Y"$></abbr></span>
+
+                                             <blockquote class="entry-summary" cite=
+                                             "<$mt:PingURL$>">
+                                             <p><strong><$mt:PingTitle$></strong></p>
+						<p><$mt:PingExcerpt$></p>
+                                             </blockquote>
+                                        </div><!--.ping-->
+                                   </li><!--.hentry-->
+                              </mt:Pings>
+                              </ol><!--/#pings-list-->
+				</mt:If>
+<$mt:Include module="Comment Form"$>
+                         </div><!--#comments-->

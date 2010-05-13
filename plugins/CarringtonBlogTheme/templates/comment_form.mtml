@@ -1,0 +1,52 @@
+<div id="respond-p<$mt:EntryID$>">
+	<form action=
+   "<$mt:CGIPath$><$mt:CommentScript$>"
+   method="post" class="comment-form">
+	<p class="comment-form-comment tight">
+	<label class="h3" for="comment-p<$mt:EntryID$>Leave a Reply <em id="cancel-comment-reply">
+	<a rel=	"nofollow" id="cancel-comment-reply-link-p<$mt:EntryID$>" href="<$mt:EntryPermalink$>&amp;cpage=1#respond-p<$mt:EntryID$>"
+	style="display:none;" name="cancel-comment-reply-link-p<$mt:EntryID$>">Cancel</a></em></label><br class="lofi" />
+
+	<span class="comment-form-comment-area">
+	<textarea id="comment-p<$mt:EntryID$>" name="text" rows=
+	"8" cols="40">
+</textarea><br />
+	<em class="some-html-is-ok"><abbr title=
+	"You can use: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; ">
+	Some HTML is OK</abbr></em></span></p>
+
+	<p class="comment-form-user-info tight">
+	<input type="text" id="author-p<$mt:EntryID$>" name=
+	"author" value="" size="22" /> <label for=
+	"author-p<$mt:EntryID$>">Name
+	<em>(required)</em></label></p><!--/name-->
+
+	<p class="comment-form-user-info tight">
+	<input type="text" id="email-p<$mt:EntryID$>" name="email"
+	value="" size="22" />
+	<label for="email-p<$mt:EntryID$>Email <em>(required, but
+	never shared)</em></label></p><!--/email-->
+
+	<p class="comment-form-user-info tight">
+	<input type="text" id="url-p<$mt:EntryID$>" name="url"
+	value="" size=
+	"22" /> <label title="Your website address" for=
+	"url-p<$mt:EntryID$>Web</label></p><!--/url-->
+
+	<p class="tight"><input name="submit" type=
+	"submit" value="Post comment" /> <span class=
+	"comment-form-trackback">or, reply to this post
+	via <a rel="trackback" href=
+	"<$mt:EntryTrackbackLink$>">
+	trackback</a>.</span></p>
+	<input type='hidden' name='comment_post_ID' value='<$mt:EntryID$>' id='comment_post_ID_p<$mt:EntryID$>' />
+	<input type='hidden' name='comment_parent' id='comment_parent_p<$mt:EntryID$>' value='0' />
+	    <input type="hidden" value="1" name="static">
+	    <input type="hidden" value="<$mt:EntryID$>" name="entry_id">
+	    <input type="hidden" value="<$mt:BlogLanguage$>" name="__lang">
+	    <input type="hidden" id="comment-parent-id" value="" name="parent_id">
+	    <mt:Ignore><input type="hidden" value="1" name="armor"></mt:Ignore>
+	    <input type="hidden" value="" name="preview">
+            <input type="hidden" value="" name="sid">
+   </form>
+</div>

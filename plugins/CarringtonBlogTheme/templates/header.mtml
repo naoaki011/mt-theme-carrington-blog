@@ -1,0 +1,15 @@
+ <div id="header" class="section">
+	<div class="wrapper">
+		<strong id="blog-title"><a href="<$mt:BlogURL$>" rel="home"><$mt:BlogName$></a></strong>
+		<p id="blog-description"><$mt:BlogDescription$></p>
+		<div id="navigation">
+			<ul class="nav clearfix">
+				<mt:Pages tag="@about" limit="1">
+				<li class="page_item page-item-<$mt:PageID$>"><a href="<$mt:PagePermalink$>" title="<$mt:PageTitle$>"><$mt:PageTitle$></a></li>
+				</mt:Pages>
+				<li class="secondary login_greeting"><mt:Ignore><a href="#">Log in</a></mt:Ignore></li>
+
+			</ul>
+		</div><!-- #navigation -->
+	</div><!-- .wrapper -->
+</div><!-- #header -->

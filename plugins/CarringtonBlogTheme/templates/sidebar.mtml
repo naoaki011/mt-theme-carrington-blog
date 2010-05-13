@@ -1,0 +1,27 @@
+<div id="sidebar">
+<div id="carrington-subscribe" class="widget">
+<h2 class="widget-title">Subscribe</h2>
+<a class="feed alignright" title="RSS 2.0 feed for posts" rel="alternate" href="<$mt:Link template="RSS Feed"$>"><img src="http://www.codemonkeyramblings.com/wordpress/wp-content/themes/carrington-blog/img/rss-button.gif"
+alt="<$mt:BlogName$> latest posts" title="<$mt:BlogName$> latest posts" /></a>
+</div><!--.widget-->
+
+	<mt:Pages tag="@about" limit="1">
+	<div id="carrington-about" class="widget">
+		<div class="about">
+			<h2 class="widget-title">About <$mt:BlogName$></h2>
+			<$mt:PageExcerpt$>
+			<a class="more" href="<$mt:PagePermalink$>">more &rarr;</a>
+		</div>
+	</div><!--.widget-->
+	</mt:Pages>
+	
+	<div id="primary-sidebar">
+		<$mt:WidgetSet name="Primary Sidebar"$>
+	</div><!--#primary-sidebar-->
+
+	<div id="secondary-sidebar">
+		<$mt:WidgetSet name="Secondary Sidebar"$>
+	</div><!--#secondary-sidebar-->
+
+	<div class="clear"></div>
+</div><!--#sidebar-->

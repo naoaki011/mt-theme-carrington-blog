@@ -1,0 +1,224 @@
+name: Carrington Blog Theme
+id: CarringtonBlogTheme
+key: CarringtonBlogTheme
+author_link: http://www.codemonkeyramblings.com
+author_name: Mike Thomsen, based on Carrington Blog.
+description: This plugin provides a Movable Type/Melody version of Carrington Blog.
+version: 1.0
+static_version: 1
+plugin_link: http://www.codemonkeyramblings.com
+
+template_sets:
+    carrington_blog_theme:
+        label: 'Carrington Blog'
+        base_path: 'templates'
+        description: 'Carrington Blog'
+        author_name: 'Mike Thomsen, based on work by Crowd Favorite (http://crowdfavorite.com)'
+        author_link: 'http://www.codemonkeyramblings.com/'
+        blog_preferences: 'carrington_blog_theme_preferences'
+        thumbnail: 'screenshot.png'
+        preview: 'screenshot.png'
+        templates:
+            index:
+                actionstreams_widgets_css:
+                    label: ActionStreams Widget CSS
+                    outfile: actionstreams_widgets.css
+                    build_type: 4
+                atom_feed:
+                    label: Atom Feed
+                    outfile: atom.xml
+                    build_type: 4
+                main_index:
+                    label: Main Index
+                    outfile: index.php
+                    build_type: 1
+                mt_jquery_data:
+                    label: MT jQuery Data
+                    outfile: jquery.mt.js
+                    build_type: 4
+                rsd:
+                    label: RSD
+                    outfile: rsd.xml
+                    build_type: 4
+                rss:
+                    label: RSS Feed
+                    outfile: rss.xml
+                    build_type: 4
+                sitemap:
+                    label: Sitemap
+                    outfile: sitemap.xml
+                    build_type: 4
+                stylesheet:
+                    label: Stylesheet
+                    outfile: styles.css
+                    build_type: 4
+            archive:
+                entry_listing:
+                    label: Entry Listing
+                    mappings:
+                        monthly:
+                            archive_type: Monthly
+                            file_template: %y/%m/%i
+                        category:
+                            archive_type: Category
+                            file_template: %-c/%i
+            individual:
+                single:
+                    label: Single
+                    mappings:
+                        entry_archive:
+                            archive_type: Individual
+                            file_template: %y/%m/%-b/%i
+                            preferred: 1
+                page:
+                    label: Page
+                    mappings:
+                        page_archive:
+                            archive_type: Page
+                            file_template: %-c/%-b/%i
+            module:
+                comment_form:
+                    label: Comment Form
+                comments:
+                    label: Comments
+                entry_details:
+                    label: Entry Details
+                entry_details_listing:
+                    label: Entry Details (Listing)
+                footer:
+                    label: Footer
+                header:
+                    label: Header
+                html_header:
+                    label: HTML Header
+                html_header_links:
+                    label: HTML Header Links
+                sidebar:
+                    label: Sidebar
+                subheader:
+                    label: Subheader
+            system:
+                comment_listing:
+                    label: Comment Listing
+                comment_preview:
+                    label: Comment Preview
+                comment_response:
+                    label: Comment Response
+                dynamic_error:
+                    label: Dynamic Error
+                search_results:
+                    label: Search Results
+                popup_image:
+                    label: Popup Image
+            widget:
+                widget_pages:
+                    label: Pages
+                widget_categories:
+                    label: Categories
+                widget_monthly_archives:
+                    label: Monthly Archives
+                widget_author_archives:
+                    label: Author Archives
+                widget_search:
+                    label: Search
+                widget_blogroll:
+                    label: Blogroll
+                widget_feeds:
+                    label: Feeds
+                widget_signin:
+                    label: Sign In
+                widget_tags:
+                    label: Tags
+            widgetset:
+                blog_activity:
+                    order: 1000
+                    label: Primary Sidebar
+                    widgets:
+                        - Pages
+                        - Categories
+                        - Monthly Archives
+                        - Author Archives
+                blog_archives:
+                    order: 1000
+                    label: Secondary Sidebar
+                    widgets:
+                        - Search
+                        - Blogroll
+                        - Feeds
+                        - Sign In
+
+
+
+blog_preferences:
+    carrington_blog_theme_preferences:
+        label: 'Carrington Blog Theme Preferences'
+        description: 'Preferred preferences for the Carrington Blog Theme'
+        plugin_data:
+            ActionStreams:
+                rebuild_for_action_stream_events: 1
+        preferences:
+            allow_anon_comments: 1
+            allow_comment_html: 1
+            allow_commenter_regist: 1
+            allow_comments_default: 1
+            allow_pings: 1
+            allow_pings_default: 1
+            allow_reg_comments: 1
+            allow_unreg_comments: 1
+            #archive_type:
+            archive_type_preferred: entry
+            autodiscover_links: 0
+            autolink_urls: 1
+            basename_limit: 100
+            captcha_provider:
+            cc_license:
+            commenter_authenticators: MovableType
+            convert_paras: 'Markdown with Smartypants'
+            convert_paras_comments: 1
+            custom_dynamic_templates: none
+            days_on_index: 0
+            email_new_comments: 1
+            email_new_pings: 1
+            entries_on_index: 10
+            file_extension: html
+            follow_auth_links: 1
+            image_default_align: right
+            image_default_constrain: 1
+            image_default_thumb: 1
+            image_default_width: 150
+            #image_default_popup: 0
+            #image_default_wrap_text:
+            #image_default_wunits:
+            include_cache: 1
+            include_system: 0
+            internal_autodiscovery: 0
+            is_dynamic: 0
+            junk_folder_expiry: 7
+            junk_score_threshold: 0
+            #language:
+            manual_approve_commenters: 0
+            moderate_pings: 1
+            moderate_unreg_comments: 0
+            nofollow_urls: 0
+            #nwc_smart_replace:
+            #nwc_replace_field:
+            #ping_blogs:
+            #ping_google:
+            ping_others: http://rpc.pingomatic.com
+            #ping_technorati:
+            #ping_weblogs:
+            #remote_auth_token:
+            require_comment_emails: 1
+            require_typekey_emails: 0
+            #sanitize_spec:
+            #server_offset:
+            sort_order_comments: ascend
+            sort_order_posts: descend
+            status_default: 2
+            #update_pings:
+            use_comment_confirmation: 1
+            #welcome_msg:
+            words_in_excerpt: 40
+
+
+

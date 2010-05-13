@@ -1,0 +1,34 @@
+<div id="sub-header" class="section">
+	<div class="wrapper">
+
+	<form method="get" id="cfct-search" action="<$mt:CGIPath$><$mt:SearchScript$> onsubmit="">
+		<div>
+			<input type="hidden" value="<$mt:BlogID$>" name="IncludeBlogs">
+            		<input type="hidden" value="20" name="limit">
+			<input type="text" id="cfct-search-input" name="search" value="" size="15" />
+			<input type="submit" name="submit_button" value="Search" />
+		</div>
+	</form>	
+		<div id="all-categories">
+			<strong id="all-categories-title">Categories:</strong>
+			<mt:var name="rec_level" value="1">
+			<mt:TopLevelCategories>
+			    <mt:SubCatIsFirst>
+			        <ul <mt:if name="rec_level" eq="1">class="nav clearfix"</mt:if>>
+			    </mt:SubCatIsFirst>
+			    <mt:If tag="CategoryCount">
+			            <li class="cat-item cat-item-<$mt:CategoryID$>"><a href="<$mt:CategoryArchiveLink$>" title="<$mt:CategoryDescription$>"><$mt:CategoryLabel$></a>
+			    <mt:Else>
+			            <li class="cat-item cat-item-<$mt:CategoryID$>"><$mt:CategoryLabel$>
+			    </mt:If>
+			    <$mt:var name="rec_level" op="++" setvar="rec_level"$>
+			    <$mt:SubCatsRecurse$>
+			            </li>
+			    <mt:SubCatIsLast>
+			        </ul>
+			    </mt:SubCatIsLast>
+			</mt:TopLevelCategories>
+
+		</div><!-- #list-categories -->
+	</div><!-- .wrapper -->
+</div><!--#sub-header-->

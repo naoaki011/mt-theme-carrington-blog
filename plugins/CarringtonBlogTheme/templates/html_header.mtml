@@ -1,0 +1,52 @@
+      <head>
+          <meta name="generator" content="<$mt:ProductName$>" />
+          <meta http-equiv="content-type" content="text/html; charset=<$mt:PublishCharset$>" />
+          <title>
+	          	<mt:If name="entry_archive">
+				<$mt:EntryTitle$> - 
+			<mt:ElseIf name="category_archive">
+				<$mt:CategoryLabel$> - 
+			<mt:ElseIf name="datebased_archive">
+				<$mt:ArchiveTitle$> - 
+			<mt:ElseIf name="author_archive">
+				<$mt:ArchiveTitle$> - 
+               		</mt:If>
+               		<$mt:BlogName$>
+               		
+          </title>
+	  <$mt:Include module="HTML Header Links"$>
+          
+          <link rel='start' title='Caught with his hand in the cookie jar' href=
+          'http://www.codemonkeyramblings.com/wordpress/?p=1' />
+          <link rel='prev' title='Adding modes to other Movable Type MT::App objects'
+          href='http://www.codemonkeyramblings.com/wordpress/?p=1866' />
+          
+          <link rel='canonical' href=
+          'http://www.codemonkeyramblings.com/wordpress/?p=1865' />
+          <link rel="stylesheet" type="text/css" media="screen" href=
+          "http://www.codemonkeyramblings.com/wordpress/wp-content/themes/carrington-blog/carrington-core/lightbox/css/thickbox.css" />
+
+          <script type="text/javascript">
+//<![CDATA[
+          var CFCT_URL = "http://www.codemonkeyramblings.com/wordpress";
+          var CFCT_AJAX_LOAD = true;
+          //]]>
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+          tb_pathToImage = "http://www.codemonkeyramblings.com/wordpress/wp-content/themes/carrington-blog/carrington-core/lightbox/img/loadingAnimation.gif";
+          jQuery(function($) {
+          $("a.thickbox").each(function() {
+                var url = $(this).attr("rel");
+                var post_id = $(this).parents("div.post").attr("id");
+                $(this).attr("href", url).attr("rel", post_id);
+          });
+          });
+          //]]>
+          </script>
+          <style type="text/css">
+/*<![CDATA[*/
+          .recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}
+          /*]]>*/
+          </style>
+      <head>

@@ -1,0 +1,43 @@
+<mt:IfArchiveTypeEnabled archive_type="Individual">
+<div class="widget_calendar widget">
+        <table summary="Monthly calendar with links to daily posts">
+<caption>
+<$mt:Date format="%B %Y"$>
+</caption>
+<thead>
+            <tr>
+                <th scope="col" abbr="Sunday">S</th>
+                <th scope="col" abbr="Monday">M</th>
+                <th scope="col" abbr="Tuesday">T</th>
+                <th scope="col" abbr="Wednesday">W</th>
+                <th scope="col" abbr="Thursday">T</th>
+                <th scope="col" abbr="Friday">F</th>
+                <th scope="col" abbr="Saturday">S</th>
+            </tr>
+</thead>
+<tbody>
+    <mt:Calendar>
+        <mt:CalendarWeekHeader>
+            <tr>
+        </mt:CalendarWeekHeader>
+                <td>
+        <mt:CalendarIfEntries>
+            <mt:Entries lastn="1">
+                    <a href="<$mt:EntryPermalink$>"><$mt:CalendarDay$></a>
+            </mt:Entries>
+        </mt:CalendarIfEntries>
+        <mt:CalendarIfNoEntries>
+                    <$mt:CalendarDay$>
+        </mt:CalendarIfNoEntries>
+        <mt:CalendarIfBlank>&nbsp;</mt:CalendarIfBlank>
+                </td>
+        <mt:CalendarWeekFooter>
+            </tr>
+        </mt:CalendarWeekFooter>
+    </mt:Calendar>
+</tbody>
+        </table>
+<div class="clear"></div>
+</div>
+</mt:IfArchiveTypeEnabled>
+

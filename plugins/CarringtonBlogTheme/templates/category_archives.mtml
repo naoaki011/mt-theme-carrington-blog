@@ -1,0 +1,22 @@
+<mt:IfArchiveTypeEnabled archive_type="Category">
+<div class="widget">
+    <h2 class="widget-header">Categories</h2>
+    <mt:TopLevelCategories>
+        <mt:SubCatIsFirst>
+        <ul>
+        </mt:SubCatIsFirst>
+        <mt:If tag="CategoryCount">
+            <li class="cat-item cat-item-<$mt:CategoryID$>"><a href="<$mt:CategoryArchiveLink$>"<mt:If tag="CategoryDescription"> title="<$mt:CategoryDescription remove_html="1" encode_html="1"$>"</mt:If>><$mt:CategoryLabel$> (<$mt:CategoryCount$>)</a>
+        <mt:Else>
+            <li class="cat-item cat-item-<$mt:CategoryID$>"><$mt:CategoryLabel$>
+        </mt:If>
+        <$mt:SubCatsRecurse$>
+            </li>
+        <mt:SubCatIsLast>
+        </ul>
+        </mt:SubCatIsLast>
+    </mt:TopLevelCategories>
+<div class="clear"></div>
+</div>
+</mt:IfArchiveTypeEnabled>
+

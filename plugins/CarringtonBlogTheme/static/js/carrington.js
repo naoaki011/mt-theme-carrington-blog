@@ -7,26 +7,24 @@ cfct.loading = function() {
 }
 
 cfct.ajax_post_content = function() {
-	jQuery('ol.archive .excerpt .entry-title a').unbind().click(function() {
-		var post_id = jQuery(this).attr('rev').replace('post-', '');
-		var excerpt = jQuery('#post-excerpt-' + post_id);
-		var target = jQuery('#post-content-' + post_id + '-target');
-		excerpt.hide();
-		target.html(cfct.loading()).show().load(CFCT_URL + '/index.php?cfct_action=post_content&id=' + post_id, function() {
-			cfct.ajax_post_comments();
+      jQuery('ol.archive .excerpt .entry-title a').unbind().click(function() {
+                var post_id = jQuery(this).attr('rev').replace('post-', '');
+                var excerpt = jQuery('#post-excerpt-' + post_id);
+                var target = jQuery('#post-content-' + post_id + '-target');
+                excerpt.hide();
+		target.slideDown(function() {
 			jQuery('#post_close_' + post_id + ' a').click(function() {
-				target.slideUp(function() {
-					excerpt.show();
-				});
-				return false;
-			});
-			jQuery(this).hide().slideDown();
+                                target.slideUp(function() {
+                                        excerpt.show();
+                                });
+                                return false;
+                        });
 		});
-		return false;
-	});
+                return false;
+        });
 }
 
-cfct.ajax_post_comments = function() {
+/*cfct.ajax_post_comments = function() {
 	jQuery('p.comments-link a').unbind().click(function() {
 		var a = jQuery(this);
 		var post_id = a.attr('rev').replace('post-', '');
@@ -93,7 +91,7 @@ addComment = {
 	I : function(e) {
 		return document.getElementById(e);
 	}
-}
+}*/
 
 jQuery(function($) {
 	// :first-child fix for IE on nav
@@ -118,7 +116,7 @@ jQuery(function($) {
 	
 	if ((!$.browser.msie || $.browser.version.substr(0,1) != '6') && typeof CFCT_AJAX_LOAD != 'undefined' && CFCT_AJAX_LOAD) {
 		cfct.ajax_post_content();
-		cfct.ajax_post_comments();
+//		cfct.ajax_post_comments();
 	}
 	$('.nav li a').removeAttr('title');
 	

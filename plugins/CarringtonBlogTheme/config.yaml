@@ -67,9 +67,15 @@ template_sets:
                         monthly:
                             archive_type: Monthly
                             file_template: %y/%m/%i
+                            build_type: 4
                         category:
                             archive_type: Category
                             file_template: %-c/%i
+                            build_type: 4
+                        author:
+                            archive_type: Author
+                            file_type: author/%-a/%f
+                            build_type: 4
             individual:
                 entry:
                     label: Entry

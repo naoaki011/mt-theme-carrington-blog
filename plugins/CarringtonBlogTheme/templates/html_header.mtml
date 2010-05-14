@@ -16,15 +16,10 @@
           </title>
 	  <$mt:Include module="HTML Header Links"$>
           
-          <link rel='start' title='Caught with his hand in the cookie jar' href=
-          'http://www.codemonkeyramblings.com/wordpress/?p=1' />
           <link rel='prev' title='Adding modes to other Movable Type MT::App objects'
-          href='http://www.codemonkeyramblings.com/wordpress/?p=1866' />
+          href=''<mt:Entries sort_by="created_on" sort_order="descend" limit="2"><mt:unless name="__first__"><$mt:EntryPermalink$></mt:unless></mt:Entries>' />
           
-          <link rel='canonical' href=
-          'http://www.codemonkeyramblings.com/wordpress/?p=1865' />
-          <link rel="stylesheet" type="text/css" media="screen" href=
-          "http://www.codemonkeyramblings.com/wordpress/wp-content/themes/carrington-blog/carrington-core/lightbox/css/thickbox.css" />
+          <link rel="stylesheet" type="text/css" media="screen" href="<$mt:CarringtonBlogThemeStaticWebPath$>/carrington-core/lightbox/css/thickbox.css" />
 
           <script type="text/javascript">
 //<![CDATA[
@@ -34,7 +29,7 @@
           </script>
           <script type="text/javascript">
 //<![CDATA[
-          tb_pathToImage = "http://www.codemonkeyramblings.com/wordpress/wp-content/themes/carrington-blog/carrington-core/lightbox/img/loadingAnimation.gif";
+          tb_pathToImage = "<$mt:CarringtonBlogThemeStaticWebPath$>/carrington-core/lightbox/img/loadingAnimation.gif";
           jQuery(function($) {
           $("a.thickbox").each(function() {
                 var url = $(this).attr("rel");

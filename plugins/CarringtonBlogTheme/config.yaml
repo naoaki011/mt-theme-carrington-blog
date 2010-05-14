@@ -5,7 +5,7 @@ author_link: http://www.codemonkeyramblings.com
 author_name: Mike Thomsen, based on Carrington Blog.
 description: This plugin provides a Movable Type/Melody version of Carrington Blog.
 version: 1.0
-static_version: 1
+static_version: 2
 plugin_link: http://www.codemonkeyramblings.com
 
 template_sets:
@@ -24,34 +24,42 @@ template_sets:
                     label: ActionStreams Widget CSS
                     outfile: actionstreams_widgets.css
                     build_type: 4
+                    rebuild_me: 1
                 atom_feed:
                     label: Atom Feed
                     outfile: atom.xml
                     build_type: 4
+                    rebuild_me: 1
                 main_index:
                     label: Main Index
                     outfile: index.php
                     build_type: 1
+                    rebuild_me: 1
                 mt_jquery_data:
                     label: MT jQuery Data
                     outfile: jquery.mt.js
                     build_type: 4
+                    rebuild_me: 1
                 rsd:
                     label: RSD
                     outfile: rsd.xml
                     build_type: 4
+                    rebuild_me: 1
                 rss:
                     label: RSS Feed
                     outfile: rss.xml
                     build_type: 4
+                    rebuild_me: 1
                 sitemap:
                     label: Sitemap
                     outfile: sitemap.xml
                     build_type: 4
+                    rebuild_me: 1
                 stylesheet:
                     label: Stylesheet
                     outfile: styles.css
                     build_type: 4
+                    rebuild_me: 1
             archive:
                 entry_listing:
                     label: Entry Listing
@@ -63,8 +71,8 @@ template_sets:
                             archive_type: Category
                             file_template: %-c/%i
             individual:
-                single:
-                    label: Single
+                entry:
+                    label: Entry
                     mappings:
                         entry_archive:
                             archive_type: Individual
@@ -87,16 +95,28 @@ template_sets:
                     label: Entry Details (Listing)
                 footer:
                     label: Footer
+                    cache:
+                        expire_type: 1
+                        expire_interval: 5
                 header:
                     label: Header
+                    cache:
+                        expire_type: 1
+                        expire_interval: 5
                 html_header:
                     label: HTML Header
                 html_header_links:
                     label: HTML Header Links
+                    cache:
+                        expire_type: 1
+                        expire_interval: 5
                 sidebar:
                     label: Sidebar
                 subheader:
                     label: Subheader
+                    cache:
+                        expire_type: 1
+                        expire_interval: 5
             system:
                 comment_listing:
                     label: Comment Listing
@@ -111,43 +131,149 @@ template_sets:
                 popup_image:
                     label: Popup Image
             widget:
-                widget_pages:
-                    label: Pages
-                widget_categories:
-                    label: Categories
-                widget_monthly_archives:
-                    label: Monthly Archives
-                widget_author_archives:
-                    label: Author Archives
-                widget_search:
+                about_this_page:
+                    label: 'About This Page'
+                action_streams:
+                    label: 'Action Streams'
+                    cache:
+                        expire_type: 1
+                        expire_interval: 30
+                        include_with_ssi: 1
+                author_archives:
+                    label: 'Author Archives'
+                    cache:
+                        expire_type: 2
+                        expire_event: author
+                        include_with_ssi: 1
+                calendar:
+                    label: Calendar
+                    cache:
+                        expire_type: 1
+                        expire_interval: 360
+                        include_with_ssi: 1
+                category_archives:
+                    label: 'Category Archives'
+                    cache:
+                        expire_type: 2
+                        expire_event: category
+                        include_with_ssi: 1
+                creative_commons:
+                    label: 'Creative Commons'
+                    cache:
+                        expire_type: 1
+                        expire_interval: 60
+                        include_with_ssi: 1
+                current_author_monthly_archives:
+                    label: 'Current Author Monthly Archives'
+                current_category_monthly_archives:
+                    label: 'Current Category Monthly Archives'
+                date_based_author_archives:
+                    label: 'Date-Based Author Archives'
+                    cache:
+                        expire_type: 2
+                        expire_event: author
+                        include_with_ssi: 1
+                date_based_category_archives:
+                    label: 'Date-Based Category Archives'
+                    cache:
+                        expire_type: 2
+                        expire_event: category
+                        include_with_ssi: 1
+                monthly_archives_dropdown:
+                    label: 'Monthly Archives Dropdown'
+                    cache:
+                        expire_type: 1
+                        expire_interval: 360
+                        include_with_ssi: 1
+                monthly_archives:
+                    label: 'Monthly Archives'
+                    cache:
+                        expire_type: 1
+                        expire_interval: 360
+                        include_with_ssi: 1
+                openid_accepted:
+                    label: 'OpenID Accepted'
+                    cache:
+                        expire_type: 1
+                        expire_interval: 360
+                        include_with_ssi: 1
+                other_profiles:
+                    label: 'Action Streams Profiles'
+                    cache:
+                        expire_type: 1
+                        expire_interval: 5
+                        include_with_ssi: 1
+                pages_listing:
+                    label: 'Page Listing'
+                    cache:
+                        expire_type: 1
+                        expire_interval: 5
+                        include_with_ssi: 1
+                powered_by:
+                    label: 'Powered By'
+                    cache:
+                        expire_type: 1
+                        expire_interval: 360
+                        include_with_ssi: 1
+                recent_assets:
+                    label: 'Recent Assets'
+                    cache:
+                        expire_type: 2
+                        expire_event: asset
+                        include_with_ssi: 1
+                recent_comments:
+                    label: 'Recent Comments'
+                    cache:
+                        expire_type: 2
+                        expire_event: comment
+                        include_with_ssi: 1
+                recent_entries:
+                    label: 'Recent Entries'
+                    cache:
+                        expire_type: 2
+                        expire_event: entry
+                        include_with_ssi: 1
+                search:
                     label: Search
-                widget_blogroll:
-                    label: Blogroll
-                widget_feeds:
-                    label: Feeds
-                widget_signin:
-                    label: Sign In
-                widget_tags:
-                    label: Tags
+                    cache:
+                        expire_type: 1
+                        expire_interval: 360
+                        include_with_ssi: 1
+                syndication:
+                    label: Syndication
+                    cache:
+                        expire_type: 1
+                        expire_interval: 360
+                        include_with_ssi: 1
+                tag_cloud:
+                    label: 'Tag Cloud'
+                    cache:
+                        expire_type: 1
+                        expire_interval: 60
+                        include_with_ssi: 1
+                technorati_search:
+                    label: 'Technorati Search'
+                    cache:
+                        expire_type: 1
+                        expire_interval: 360
+                        include_with_ssi: 1
             widgetset:
-                blog_activity:
+                primary_sidebar:
                     order: 1000
                     label: Primary Sidebar
                     widgets:
-                        - Pages
-                        - Categories
+                        - Pages Listing
                         - Monthly Archives
-                        - Author Archives
-                blog_archives:
+                        - Category Archives
+                        - Recent Entries
+                secondary_sidebar:
                     order: 1000
                     label: Secondary Sidebar
                     widgets:
                         - Search
-                        - Blogroll
-                        - Feeds
-                        - Sign In
-
-
+                        - Syndication 
+                        - Recent Comments
+                        - Calendar
 
 blog_preferences:
     carrington_blog_theme_preferences:

@@ -11,5 +11,52 @@
 	
 	<span class="comments-link"><a title="Comment on <$mt:EntryTitle$>" rev="post-<$mt:EntryID$>" href="<$mt:EntryPermalink$>#comments"><$mt:EntryCommentCount$> comments</a></span>
 </div><!-- .excerpt -->		
-<div id="post-content-<$mt:EntryID$>-target"></div>
+<mt:Ignore><div id="post-content-<$mt:EntryID$>-target"></div></mt:Ignore>
+<div id="post-content-<$mt:EntryID$>-target" style="display: none;">
+	<div class="post-<$mt:EntryID$> post type-post hentry full" id="post-content-<$mt:EntryID$>">
+	<h1 class="entry-title full-title">
+		<a rev="post-<$mt:EntryID$>" rel="bookmark" title="Permanent link to <$mt:EntryTitle$>" href="<$mt:EntryPermalink$><$mt:EntryID$>"><$mt:EntryTitle$></a>
+	</h1>
+	
+	<div class="entry-content full-content">
+		<$mt:EntryBody$>
+		<div class="clear"></div>
+	</div><!-- .entry-content-->
+	
+	<p class="filed categories alt-font tight">
+		Posted in 
+   		<mt:EntryCategories glue=", ">
+			<a rel="category" title="View all posts in <$mt:CategoryLabel$>" href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel$></a>
+		</mt:EntryCategories>
+	.</p>
+	
+	<p class="comments-link">
+		<a title="Comment on <$mt:EntryTitle$>" rev="post-<$mt:EntryID$>" href="<$mt:EntryPermalink$><$mt:EntryID$>#comments">
+			<$mt:EntryCommentCount$> comments
+		</a>
+	</p>
+	<p class="by-line">
+		<span class="author vcard full-author">
+			<span class="by alt-font">By</span>
+				<a title="View all posts by <$mt:EntryAuthor$>" href="
+					<mt:IfArchiveTypeEnabled archive_type="Author">
+    						<mt:ArchiveList archive_type="Author">
+							<$mt:EntryAuthorDisplayName setvar="thisauthor"$>
+							<mt:If tag="ArchiveTitle" eq="$thisauthor">
+								<$mt:ArchiveLink$>
+							</mt:If>
+						</mt:ArchiveList>
+					</mt:IfArchiveTypeEnabled>
+				" class="url fn">admin</a>
+			</span>
+		<span class="date full-date"><span class="ndash alt-font">&ndash;</span> 
+		<abbr title="<$mt:EntryDate format="%Y-%m-%dT%H:%M"$>" class="published"><$mt:EntryDate format="%B %d, %Y"$>January 5, 2010</abbr></span>
+	</p><!--/by-line-->
+
+	<div id="post-comments-<$mt:EntryID$>-target"></div>
+	<div class="clear"></div>
+	
+	</div><!-- .post -->
+	<div id="post_close_<$mt:EntryID$>" class="close"><a href="#">Close</a></div>
+</div>
 </li>

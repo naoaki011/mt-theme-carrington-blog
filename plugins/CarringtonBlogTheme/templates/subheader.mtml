@@ -9,6 +9,7 @@
 			<input type="submit" name="submit_button" value="Search" />
 		</div>
 	</form>	
+	<mt:If tag="CategoryCount" gt="0">
 		<div id="all-categories">
 			<strong id="all-categories-title">Categories:</strong>
 			<mt:var name="rec_level" value="1">
@@ -30,5 +31,6 @@
 			</mt:TopLevelCategories>
 
 		</div><!-- #list-categories -->
+	</mt:If>
 	</div><!-- .wrapper -->
 </div><!--#sub-header-->

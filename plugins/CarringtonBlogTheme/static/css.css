@@ -337,6 +337,9 @@ h1.page-title {
 .nav li a {
 	display:block;
 }
+#login_greeting a {
+	display: inline;
+}
 .nav li li a {
 	color: #a00004 !important; /* These need to retain a contrasting color with dropdown background */
 	padding:6px 9px;
@@ -505,6 +508,7 @@ h1.page-title {
 #sub-header {
 	background-color: #e9eaea;
 	padding: 9px 0;
+	min-height:24px;
 }
 #sub-header form#cfct-search {
 	float:right;

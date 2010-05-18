@@ -43,4 +43,38 @@
           .recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}
           /*]]>*/
           </style>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+jQuery("#login_greeting").greet();
+<mt:Ignore>
+   if (jQuery('#comments-form')) {
+      /* First, let's boot strap the comment form on the page. 
+       * In this one step, we take the default MT comment form and turn
+       * into a fully AJAXified comment form. 
+       */
+      var form = jQuery('#comments-form').commentForm({ 
+        target: '.comments-open-content'
+      });
+      /* Once the form is bootstrapped and we have a handle to it
+       * we then pass that as a handle to the reply function which
+       * provides the inline commenting ability.
+       */
+      jQuery('a[title=Reply]').reply({
+        sourceForm: form
+      });
+</mt:Ignore>
+      jQuery("#comment-greeting").greet();
+      jQuery("#comments-form").onauthchange(function(evt, user) {
+         var openDataDiv = jQuery("#comments-open-data");
+
+         if (openDataDiv && user.is_authenticated)
+         {
+            jQuery("#comment-author", openDataDiv).val(user.name);
+            jQuery("#comment-email", openDataDiv).val(user.email);
+            jQuery("#comment-url", openDataDiv).val(user.url);
+            jQuery(openDataDiv).fadeOut(1000);
+         }
+      });
+});
+</script>
       <head>

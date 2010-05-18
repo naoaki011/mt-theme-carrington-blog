@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+<$mt:Include module="HTML Header"$>
+<body>
+	<div id="page">
+		<div id="top"><a class="accessibility" href="#content">Skip to content</a></div>
+		<hr class="lofi" />
+
+<$mt:Include module="Header"$>
+<$mt:Include module="Subheader"$>
+		
+		<hr class="lofi" />
+		<div id="main" class="section">
+			<div class="wrapper">
+<div id="content">
+
+<mt:Ignore><!--
+    Below is the block to show search results.
+    This makes an independent block to support
+    Ajax-based background retrieval of the next search results.
+--></mt:Ignore>
+	<mt:SetVarTemplate id="search_results" name="search_results">  
+		<mt:SearchResults>
+			<mt:SearchResultsHeader>
+			<div id="search-results">
+                                <h1 id="page-title" class="search-results-header">
+        			<mt:IfStraightSearch>
+                                    Results matching &ldquo;<$mt:SearchString$>&rdquo;
+        			</mt:IfStraightSearch>
+        			<mt:IfTagSearch>
+                                    Results tagged &ldquo;<$mt:SearchString$>&rdquo;
+        			</mt:IfTagSearch>
+                                </h1>
+                                <div class="search-results-container autopagerize_page_element"></div>
+    			</mt:SearchResultsHeader>
+                                    <$mt:Include module="Entry Details" hide_counts="1"$>
+    			<mt:SearchResultsFooter>
+			</div>
+    			</mt:SearchResultsFooter>
+		</mt:SearchResults>
+	</mt:SetVarTemplate>
+<mt:Ignore><!-- Display search results constructed in the block above --></mt:Ignore>
+<$mt:Var name="search_results"$>
+
+
+<mt:Ignore><!-- Display no results message --></mt:Ignore>
+<mt:NoSearchResults>
+                            <h1 id="page-title" class="search-results-header">
+    <mt:IfStraightSearch>
+                                Results matching &ldquo;<$mt:SearchString$>&rdquo;
+    </mt:IfStraightSearch>
+    <mt:IfTagSearch>
+                                Results tagged &ldquo;<$mt:SearchString$>&rdquo;
+    </mt:IfTagSearch>
+                            </h1>
+                            <p>No results found for &ldquo;<$mt:SearchString$>&rdquo;.</p>
+</mt:NoSearchResults>
+
+
+<mt:Ignore><!-- Display instructions for searching if search script was accessed without a query --></mt:Ignore>
+<mt:NoSearch>
+                            <h1 id="page-title" class="search-results-header">Instructions</h1>
+                            <p>By default, this search engine looks for all words in any order. To search for an exact phrase, enclose the phrase in quotes:</p>
+                            <blockquote>
+                                <p><code>"movable type"</code></p>
+                            </blockquote>
+                            <p>The search engine also supports AND, OR, and NOT keywords to specify boolean expressions:</p>
+                            <blockquote>
+                                <p><code>personal OR publishing</code></p>
+                                <p><code>publishing NOT personal</code></p>
+                            </blockquote>
+</mt:NoSearch>
+
+
+<div class="pagination">
+	<span class="previous"><mt:IfPreviousResults><a href="<$mt:PreviousLink$>" rel="prev" onclick="return swapContent(-1);">&lt; Previous</a>&nbsp;&nbsp;</mt:IfPreviousResults></span>
+	                                    <mt:Ignore><mt:PagerBlock><mt:IfCurrentPage><$mt:Var name="__value__"$><mt:Else><a href="<$mt:PagerLink$>"><$mt:Var name="__value__"$></a></mt:IfCurrentPage><mt:Unless name="__last__">&nbsp;</mt:Unless></mt:PagerBlock></mt:Ignore>
+	<span class="next"><mt:IfMoreResults>&nbsp;&nbsp;<a href="<$mt:NextLink$>" rel="next" onclick="return swapContent();">Next &gt;</a></mt:IfMoreResults></span>
+</div></div><!--#content-->
+
+<hr class="lofi" />
+<$mt:Include module="Sidebar"$>
+			<div class="clear"></div>
+			</div><!-- .wrapper -->
+		</div><!-- #main -->
+		<hr class="lofi" />
+<$mt:Include module="Footer"$>
+	</div><!--#page-->
+	</body>
+</html>

@@ -121,13 +121,11 @@ template_sets:
                 subheader:
                     label: Subheader
                     cache:
-                        expire_type: 1
-                        expire_interval: 5
+                        expire_type: 2
+                        expire_event:
+                            - category
+                            - page
             system:
-                comment_listing:
-                    label: Comment Listing
-                comment_preview:
-                    label: Comment Preview
                 comment_response:
                     label: Comment Response
                 dynamic_error:

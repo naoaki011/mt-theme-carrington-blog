@@ -1,3 +1,9 @@
+<$mt:var name="entries_per_page" value="20"/>
+<mt:Ignore><!-- Construct the url for querying entries. --></mt:Ignore>
+<mt:SetVarBlock name="search_link">
+<$mt:CGIPath$><$mt:SearchScript$>?IncludeBlogs=<$mt:BlogID$>&template_id=<$mt:BuildTemplateID$>&limit=<$mt:Var name="entries_per_page"$>&archive_type=Index&page=
+</mt:SetVarBlock>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
 <$mt:Include module="HTML Header"$>
@@ -15,13 +21,59 @@
 			<div class="wrapper">
 <div id="content">
 
-<mt:Entries>
+<mt:Entries limit="$entries_per_page">
 	<$mt:Include module="Entry Details"$>
 </mt:Entries>
 
 <div class="pagination">
-	<span class="previous"></span>
-	<span class="next"><a href="http://www.codemonkeyramblings.com/wordpress/?paged=2" >Next &raquo;</a></span>
+<mt:SetVarBlock name="pagination_navigation">
+    <mt:If name="search_results">
+        <mt:IfPreviousResults>
+            <span class="previous"><a href="<$mt:PreviousLink$>" rel="prev" onclick="return swapContent(-1);">&lt; Previous</a>&nbsp;</span>
+        </mt:IfPreviousResults>
+	<mt:Ignore>
+        <mt:PagerBlock>
+            <mt:IfCurrentPage>
+                <$mt:Var name="__value__"$>
+            <mt:Else>
+                <a href="<$mt:PagerLink$>"><$mt:Var name="__value__"$></a>
+            </mt:IfCurrentPage>
+        </mt:PagerBlock>
+	</mt:Ignore>
+        <mt:IfMoreResults>
+            <span class="next">&nbsp;<a href="<$mt:NextLink$>" rel="next" onclick="return swapContent();">Next &gt;</a></span>
+        </mt:IfMoreResults>
+    <mt:Else>
+        <mt:If name="archive_template">
+            <$mt:ArchiveCount setvar="total_entries"$>
+        <mt:Else>
+            <$mt:BlogEntryCount setvar="total_entries"$>
+        </mt:If>
+        <mt:If name="total_entries" gt="$entries_per_page">
+            <mt:If name="total_entries" op="%" value="$entries_per_page" eq="0">
+                <$mt:Var name="total_entries" op="/" value="$entries_per_page" setvar="total_pages"$>
+            <mt:Else>
+                <$mt:Var name="total_entries" op="%" value="$entries_per_page" setvar="remainder"$>
+                <$mt:Var name="total_entries" op="-" value="$remainder" setvar="total_entries"$>
+                <$mt:Var name="total_entries" op="/" value="$entries_per_page" setvar="total_pages"$>
+                <$mt:SetVar name="total_pages" op="++"$>
+            </mt:If>
+            <mt:Ignore>
+            <mt:For from="1" to="$total_pages" step="1">
+            <mt:If name="__first__">
+                <$mt:Var name="__index__"$>
+            <mt:Else>
+                <a href="<$mt:Var name="search_link"$><$mt:Var name="__index__"$>"><$mt:Var name="__index__"$></a>
+            </mt:If> 
+            </mt:For>
+            </mt:Ignore>
+            <mt:Ignore><!-- Hard-coded link to the next page (page 2). --></mt:Ignore>
+            <span class="next">&nbsp;<a href="<$mt:Var name="search_link"$>2" rel="next">Next &raquo;</a></span>
+        </mt:If>
+    </mt:If>
+</mt:SetVarBlock>
+<$mt:var name="pagination_navigation"$>
+
 </div></div><!--#content-->
 
 <hr class="lofi" />

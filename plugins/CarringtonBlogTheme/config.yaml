@@ -18,6 +18,20 @@ template_sets:
         blog_preferences: 'carrington_blog_theme_preferences'
         thumbnail: 'screenshot.png'
         preview: 'screenshot.png'
+        options:
+            comment_pagination:
+                label: 'Paginate comments'
+                hint: 'Paginating comments will break up comment listings into groups of a user-defined size.'
+                tag: CarringtonPaginateComments
+                type: radio
+                values: Yes, No
+                default: No
+            comment_pagination_count:
+                label: 'Number of comments per page'
+                hint: 'If pagination is enabled, this is the number of comments that will appear in each block on a page with comments.'
+                tag: CarringtonPaginateCommentsCount
+                type: text
+                default: '10'
         templates:
             index:
                 actionstreams_widgets_css:

@@ -1,4 +1,9 @@
- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+<$mt:Var name="entries_per_page" value="20"$>
+<mt:SetVarBlock name="search_link">
+    <$mt:CGIPath$><$mt:SearchScript$>?IncludeBlogs=<$mt:BlogID$>&template_id=<$mt:BuildTemplateID$>&limit=<$mt:Var name="entries_per_page"$><mt:If name="archive_template">&archive_type=<$mt:ArchiveType$><mt:If name="datebased_archive">&year=<$mt:ArchiveDate format='%Y'$>&month=<$mt:ArchiveDate format='%m'$>&day=<$mt:ArchiveDate format='%d'$></mt:If><mt:If name="category_archive">&category=<$mt:CategoryID$></mt:If><mt:If name="author_archive">&author=<$mt:AuthorID$></mt:If><mt:Else>&archive_type=Index</mt:If>&page=
+</mt:SetVarBlock>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en-US">
 <$mt:Include module="HTML Header"$>
@@ -25,9 +30,53 @@
 				</mt:Entries>
                               </ol><!--.archive-->
                               <div class="pagination">
-                                   <span class="next"><a href=
-                                   "http://www.codemonkeyramblings.com/wordpress/?cat=1&amp;paged=2">
-                                   Next &raquo;</a></span>
+<mt:SetVarBlock name="pagination_navigation">
+    <mt:If name="search_results">
+        <mt:IfPreviousResults>
+            <span class="previous"><a href="<$mt:PreviousLink$>" rel="prev" onclick="return swapContent(-1);">&laquo; Previous</a>&nbsp;</span>
+        </mt:IfPreviousResults>
+	<mt:Ignore>
+        <mt:PagerBlock>
+            <mt:IfCurrentPage>
+                <$mt:Var name="__value__"$>
+            <mt:Else>
+                <a href="<$mt:PagerLink$>"><$mt:Var name="__value__"$></a>
+            </mt:IfCurrentPage>
+        </mt:PagerBlock>
+	</mt:Ignore>
+        <mt:IfMoreResults>
+            <span class="next">&nbsp;<a href="<$mt:NextLink$>" rel="next" onclick="return swapContent();">Next &raquo;</a></span>
+        </mt:IfMoreResults>
+    <mt:Else>
+        <mt:Ignore><!-- Navigation for statically published page. --></mt:Ignore>
+        <mt:If name="archive_template">
+            <$mt:ArchiveCount setvar="total_entries"$>
+        <mt:Else>
+            <$mt:BlogEntryCount setvar="total_entries"$>
+        </mt:If>
+        <mt:If name="total_entries" gt="$entries_per_page">
+            <mt:If name="total_entries" op="%" value="$entries_per_page" eq="0">
+                <$mt:Var name="total_entries" op="/" value="$entries_per_page" setvar="total_pages"$>
+            <mt:Else>
+                <$mt:Var name="total_entries" op="%" value="$entries_per_page" setvar="remainder"$>
+                <$mt:Var name="total_entries" op="-" value="$remainder" setvar="total_entries"$>
+                <$mt:Var name="total_entries" op="/" value="$entries_per_page" setvar="total_pages"$>
+                <$mt:SetVar name="total_pages" op="++"$>
+            </mt:If>
+	<mt:Ignore>
+            <mt:For from="1" to="$total_pages" step="1">
+            <mt:If name="__first__">
+                <$mt:Var name="__index__"$>
+            <mt:Else>
+                <a href="<$mt:Var name="search_link"$><$mt:Var name="__index__"$>"><$mt:Var name="__index__"$></a>
+            </mt:If>
+            </mt:For>
+	</mt:Ignore>
+		<span class="next">&nbsp;<a href="<$mt:Var name="search_link"$>2" rel="next">Next &raquo;</a></span>
+        </mt:If>
+    </mt:If>
+</mt:SetVarBlock>
+<$mt:Var name="pagination_navigation" regex_replace="/\%20*/"$>
                               </div>
                          </div>
                          <hr class="lofi" />

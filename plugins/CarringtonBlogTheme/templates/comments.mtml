@@ -8,13 +8,10 @@
 				<$mt:var name="ccount" op="+" value="$tbcount" setvar="ccount"$>
                               <h2 class="h1 comments-title"><$mt:var name="ccount"$> Responses</h2>
 
-                              <p>Stay in touch with the conversation, subscribe to the
-                              <a class="feed" rel="alternate" href=
-                              "http://www.codemonkeyramblings.com/wordpress/?feed=rss2&amp;p=1907">
-                              <acronym title="Really Simple Syndication">RSS</acronym>
-                              feed for comments on this post</a>.</p>
 
-                              <ol class="commentlist hfeed">
+		<mt:setvarblock name="comment_listing">
+			<mt:If tag="CarringtonPaginateComments" eq="No">
+				<ol class="commentlist hfeed">
                               <mt:Comments>
                                    <li class="li-comment" id="li-comment-<$mt:CommentID$>">
                                         <div class="div-comment" id="div-comment-<$mt:CommentID$>">
@@ -54,9 +51,87 @@
                                              </div><!--.comment-->
                                         </div>
                                    </li>
-                              </mt:Comments>
                               </ol>
+                              </mt:Comments>
+			<mt:Else>
+				<$mt:CarringtonPaginateCommentsCount setvar="cCount" $>
+				<mt:Comments>
+
+				<mt:If name="__first__">
+					<ol class="commentlist hfeed">
+				</mt:If>
+
+                                   <li class="li-comment" id="li-comment-<$mt:CommentID$>">
+                                        <div class="div-comment" id="div-comment-<$mt:CommentID$>">
+                                             <div id="comment-<$mt:CommentID$>" class=
+                                             "comment even thread-even depth-1 hentry">
+                                                  <address class="vcard author entry-title comment-author">
+                                                  <span class="photo avatar">
+							<img alt='' src= '<$mt:Gravatar rating="G" size="48"$>' 
+								class='avatar avatar-48 photo' height='48' width='48' />
+						  </span>
+                                                       <cite class="fn">
+								<a href='<$mt:CommentAuthorLink$>' rel='external nofollow'
+									class='url'><$mt:CommentAuthor$></a>
+							</cite>
+                                                       <span class="says">says</span>
+                                                  </address><!--.vcard-->
+
+                                                  <div class="entry-content comment-content">
+                                                       <$mt:CommentBody$>
+                                                  </div><!--.entry-content-->
+
+                                                  <div class="clear"></div>
+
+                                                  <div class=
+                                                  "comment-meta commentmetadata small">
+                                                       <span class=
+                                                       "date comment-date"><abbr class=
+                                                       "published" title=
+                                                       "<$mt:CommentDate$>"><$mt:CommentDate format="%B %d, %Y,"$>
+                                                       <a title=
+                                                       "Permanent link to this comment"
+                                                       rel="bookmark" href=
+                                                       "<$mt:EntryPermalink$>#comment-<$mt:CommentID$>">
+                                                       <$mt:CommentDate format="%l:%M"$></a></abbr></span> 
+                                                       <!--.date-->
+                                                  </div>
+                                             </div><!--.comment-->
+                                        </div>
+                                   </li>
+
+				<mt:If name="__counter__" op="%" value="$cCount" eq="0">
+					</ol>
+					<mt:Unless name="__last__">
+					<ol class="commentlist hfeed" style="display: none">
+					</mt:Unless>
+				</mt:If>
+
+				<mt:If name="__last__">
+					<mt:If name="__counter__" op="%" value="$cCount" ne="0">
+						</ol>
+					</mt:If>
+				</mt:If>
+				</mt:Comments>
+			</mt:If>
+		</mt:setvarblock>
+
+		<mt:If name="comment_listing">
+			<$mt:var name="comment_listing"$>
+		</mt:If>
                               <p class="comment-pagination">
+	<$mt:EntryCommentCount setvar="cNum"$>
+	<$mt:var name="block" value="1"$>
+	<mt:If name="cNum" gt="$cCount">
+		<a href="<$mt:EntryPermalink$>#comments" class="prev page-numbers">&laquo; Previous</a>
+	</mt:If>
+	<mt:For from="0" to="$cNum" step="$cCount">
+		<a href="<$mt:EntryPermalink$>#comments" class="page-numbers"><$mt:var name="block"$></a>
+		<$mt:var name="block" op="++" setvar="block"$>
+	</mt:For>
+	<mt:If name="cNum" gt="$cCount">
+		<a href="<$mt:EntryPermalink$>#comments" class="next page-numbers">Next &raquo;</a></p>
+	</mt:If>
 
 			      </p>
 				<mt:If tag="EntryTrackbackCount" gt="0">

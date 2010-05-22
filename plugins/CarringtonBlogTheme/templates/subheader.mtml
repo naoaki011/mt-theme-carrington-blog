@@ -1,15 +1,15 @@
 <div id="sub-header" class="section">
 	<div class="wrapper">
 
-	<form method="get" id="cfct-search" action="<$mt:CGIPath$><$mt:SearchScript$> onsubmit="">
+	<form method="get" id="cfct-search" action="<$mt:CGIPath$><$mt:SearchScript$>">
 		<div>
-			<input type="hidden" value="<$mt:BlogID$>" name="IncludeBlogs">
-            		<input type="hidden" value="20" name="limit">
+			<input type="hidden" value="<$mt:BlogID$>" name="IncludeBlogs"/>
+            		<input type="hidden" value="20" name="limit"/>
 			<input type="text" id="cfct-search-input" name="search" value="" size="15" />
 			<input type="submit" name="submit_button" value="Search" />
 		</div>
 	</form>	
-	<mt:If tag="CategoryCount" gt="0">
+	<mt:If tag="BlogCategoryCount" gt="0">
 		<div id="all-categories">
 			<strong id="all-categories-title">Categories:</strong>
 			<mt:var name="rec_level" value="1">

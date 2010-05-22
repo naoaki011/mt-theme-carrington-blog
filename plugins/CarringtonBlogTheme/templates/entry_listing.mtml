@@ -1,6 +1,6 @@
 <$mt:Var name="entries_per_page" value="20"$>
 <mt:SetVarBlock name="search_link">
-    <$mt:CGIPath$><$mt:SearchScript$>?IncludeBlogs=<$mt:BlogID$>&template_id=<$mt:BuildTemplateID$>&limit=<$mt:Var name="entries_per_page"$><mt:If name="archive_template">&archive_type=<$mt:ArchiveType$><mt:If name="datebased_archive">&year=<$mt:ArchiveDate format='%Y'$>&month=<$mt:ArchiveDate format='%m'$>&day=<$mt:ArchiveDate format='%d'$></mt:If><mt:If name="category_archive">&category=<$mt:CategoryID$></mt:If><mt:If name="author_archive">&author=<$mt:AuthorID$></mt:If><mt:Else>&archive_type=Index</mt:If>&page=
+    <$mt:CGIPath$><$mt:SearchScript$>?IncludeBlogs=<$mt:BlogID$>&amp;template_id=<$mt:BuildTemplateID$>&amp;limit=<$mt:Var name="entries_per_page"$><mt:If name="archive_template">&amp;archive_type=<$mt:ArchiveType$><mt:If name="datebased_archive">&amp;year=<$mt:ArchiveDate format='%Y'$>&amp;month=<$mt:ArchiveDate format='%m'$>&amp;day=<$mt:ArchiveDate format='%d'$></mt:If><mt:If name="category_archive">&amp;category=<$mt:CategoryID$></mt:If><mt:If name="author_archive">&amp;author=<$mt:AuthorID$></mt:If><mt:Else>&amp;archive_type=Index</mt:If>&amp;page=
 </mt:SetVarBlock>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"

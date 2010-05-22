@@ -1,7 +1,7 @@
 <$mt:var name="entries_per_page" value="20"/>
 <mt:Ignore><!-- Construct the url for querying entries. --></mt:Ignore>
 <mt:SetVarBlock name="search_link">
-<$mt:CGIPath$><$mt:SearchScript$>?IncludeBlogs=<$mt:BlogID$>&template_id=<$mt:BuildTemplateID$>&limit=<$mt:Var name="entries_per_page"$>&archive_type=Index&page=
+<$mt:CGIPath$><$mt:SearchScript$>?IncludeBlogs=<$mt:BlogID$>&amp;template_id=<$mt:BuildTemplateID$>&amp;limit=<$mt:Var name="entries_per_page"$>&amp;archive_type=Index&amp;page=
 </mt:SetVarBlock>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

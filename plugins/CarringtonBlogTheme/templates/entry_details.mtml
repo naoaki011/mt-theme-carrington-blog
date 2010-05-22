@@ -1,6 +1,6 @@
  <div class="post-<$mt:EntryID$> post type-post hentry category-1 full" id="post-content-<$mt:EntryID$>">
    <h1 class="entry-title full-title">
-	<a rev="post-<$mt:EntryID$>" rel="bookmark" title="Permanent link to <$mt:EntryTitle$>" href="<$mt:EntryPermalink$>"><$mt:EntryTitle$></a>
+	<a rev="post-<$mt:EntryID$>" rel="bookmark" title="Permanent link to <$mt:EntryTitle escape="html"$>" href="<$mt:EntryPermalink$>"><$mt:EntryTitle$></a>
    </h1>
    <div class="entry-content full-content">
 	<$mt:EntryBody$>
@@ -13,7 +13,7 @@ Posted in
 	</mt:EntryCategories>
    </p>
    <p class="comments-link">
-	<a title="Comment on <$mt:EntryTitle$>" rev="post-1866" href="<$mt:EntryPermalink$>#respond">
+	<a title="Comment on <$mt:EntryTitle escape="html"$>" rev="post-1866" href="<$mt:EntryPermalink$>#respond">
 	<mt:If tag="EntryCommentCount" gt="0">
 	<$mt:EntryCommentCount$> comments
 	<mt:Else>
@@ -28,4 +28,4 @@ Posted in
    <div id="post-comments-<$mt:EntryId$>-target"></div>
    <div class="clear"></div>
 </div>
-<div class="rule"><hr></div>
+<div class="rule"><hr/></div>

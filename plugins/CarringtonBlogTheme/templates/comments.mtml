@@ -41,12 +41,25 @@
                 		</div>
                  </mt:setvartemplate>
                               
-
-
+<$mt:CarringtonPaginateComments setvar="doPaginate"$>
+<$mt:CarringtonPaginateCommentsCount setvar="commentsPerPage"$>
+<$mt:var name="numberOfParents" value="0"$>
+<mt:If tag="EntryCommentCount" gt="0">
+<ol class="commentlist hfeed">
+</mt:If>
 <mt:Comments>
-	<mt:CommentsHeader><ol class="commentlist hfeed"></mt:CommentsHeader>
+	<mt:Ignore><mt:CommentsHeader><ol class="commentlist hfeed"></mt:CommentsHeader></mt:Ignore>
 	<mt:IfCommentParent>
 	<mt:Else>
+		<mt:If tag="CarringtonPaginateComments" eq="Yes">
+		<mt:If name="numberOfParents" op="%" value="$commentsPerPage" eq="0">
+			<mt:Unless name="numberOfParents" eq="0">
+			</ol>
+			<ol class="commentlist hfeed" style="display:none">
+			</mt:Unless>
+		</mt:If>
+		<$mt:var name="numberOfParents" op="++" setvar="numberOfParents"$>
+		</mt:If>
 		<li class="li-comment" id="li-comment-<$mt:CommentID$>">
 			<$mt:var name="comment_detail"$>
 			<mt:CommentReplies>
@@ -59,26 +72,27 @@
 			</mt:CommentReplies>
 		</li>
 	</mt:IfCommentParent>
-	<mt:CommentsFooter></ol></mt:CommentsFooter>
+	<mt:Ignore><mt:CommentsFooter></ol></mt:CommentsFooter></mt:Ignore>
 </mt:Comments>
+<mt:If tag="EntryCommentCount" gt="0">
+</ol>
+</mt:If>
 
-
- 
+			<mt:If tag="CarringtonPaginateComments" eq="Yes"> 
                               <p class="comment-pagination">
-        <$mt:EntryCommentCount setvar="cNum"$>
-        <$mt:var name="block" value="1"$>
-        <mt:If name="cNum" gt="$cCount">
-                <a href="<$mt:EntryPermalink$>#comments" class="prev page-numbers">&laquo; Previous</a>
-        </mt:If>
-        <mt:For from="0" to="$cNum" step="$cCount">
-                <a href="<$mt:EntryPermalink$>#comments" class="page-numbers"><$mt:var name="block"$></a>
-                <$mt:var name="block" op="++" setvar="block"$>
-        </mt:For>
-        <mt:If name="cNum" gt="$cCount">
-                <a href="<$mt:EntryPermalink$>#comments" class="next page-numbers">Next &raquo;</a></p>
-        </mt:If>
-
+				<$mt:var name="block" value="1"$>
+			        <mt:If name="numberOfParents" gt="commentsPerPage">
+			                <a href="<$mt:EntryPermalink$>#comments" class="prev page-numbers">&laquo; Previous</a>
+			        </mt:If>
+			        <mt:For from="0" to="$numberOfParents" step="$commentsPerPage">
+			                <a href="<$mt:EntryPermalink$>#comments" class="page-numbers"><$mt:var name="block"$></a>
+			                <$mt:var name="block" op="++" setvar="block"$>
+			        </mt:For>
+			        <mt:If name="numberOfParents" gt="$commentsPerPage">
+			                <a href="<$mt:EntryPermalink$>#comments" class="next page-numbers">Next &raquo;</a></p>
+			        </mt:If>
                               </p>
+			</mt:If>
                                 <mt:If tag="EntryTrackbackCount" gt="0">
                               <h3 class="pings">Continuing the Discussion</h3>
 

@@ -47,9 +47,14 @@
 jQuery(document).ready(function(){
 jQuery("#login_greeting").greet();
       cForm = jQuery("form.comment-form");
-      jQuery("#comment-greeting").greet();
+	cForm.submit(function() {
+		alert(jQuery("#author", cForm).val());
+		return true;
+	});
+      //jQuery("#comment-greeting").greet();
+	jQuery.fn.movabletype.fetchUser();
+	var user = jQuery.fn.movabletype.getUser();
       cForm.onauthchange(function(evt, user) {
-
          if (user.is_authenticated)
          {
             jQuery("#author", cForm).val(user.name).parent().hide();

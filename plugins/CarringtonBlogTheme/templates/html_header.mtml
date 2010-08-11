@@ -19,7 +19,7 @@
           <link rel='prev' title='Adding modes to other Movable Type MT::App objects'
           href='<mt:Entries sort_by="created_on" sort_order="descend" limit="2"><mt:unless name="__first__"><$mt:EntryPermalink$></mt:unless></mt:Entries>' />
           
-          <link rel="stylesheet" type="text/css" media="screen" href="<$mt:PluginStaticWebPath component="CarringtonBlogTheme"$>/carrington-core/lightbox/css/thickbox.css" />
+          <link rel="stylesheet" type="text/css" media="screen" href="<$mt:CarringtonBlogThemeStaticWebPath$>/carrington-core/lightbox/css/thickbox.css" />
 
           <script type="text/javascript">
 //<![CDATA[
@@ -28,7 +28,7 @@
           </script>
           <script type="text/javascript">
 //<![CDATA[
-          tb_pathToImage = "<$mt:PluginStaticWebPath component="CarringtonBlogTheme"$>/carrington-core/lightbox/img/loadingAnimation.gif";
+          tb_pathToImage = "<$mt:CarringtonBlogThemeStaticWebPath$>/carrington-core/lightbox/img/loadingAnimation.gif";
           jQuery(function($) {
           $("a.thickbox").each(function() {
                 var url = $(this).attr("rel");
@@ -48,7 +48,7 @@ jQuery(document).ready(function(){
 jQuery("#login_greeting").greet();
       cForm = jQuery("form.comment-form");
 	cForm.submit(function() {
-		alert(jQuery("#author", cForm).val());
+		jQuery('#armor').val( mt.blog.comments.armor );
 		return true;
 	});
       //jQuery("#comment-greeting").greet();

@@ -16,8 +16,8 @@ template_sets:
         author_name: 'Mike Thomsen, based on work by Crowd Favorite (http://crowdfavorite.com)'
         author_link: 'http://www.codemonkeyramblings.com/'
         blog_preferences: 'carrington_blog_theme_preferences'
-        thumbnail: 'screenshot.png'
-        preview: 'screenshot.png'
+        thumbnail: 'thumbnail.png'
+        preview: 'preview.png'
         options:
             comment_pagination:
                 label: 'Paginate comments'

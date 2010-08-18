@@ -105,10 +105,6 @@ template_sets:
                             archive_type: Page
                             file_template: %-c/%-b/%i
             module:
-                comment_form:
-                    label: Comment Form
-                comments:
-                    label: Comments
                 entry_details:
                     label: Entry Details
                 entry_details_listing:

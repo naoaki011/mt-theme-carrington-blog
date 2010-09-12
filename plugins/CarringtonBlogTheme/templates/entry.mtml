@@ -2,6 +2,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en-US">
 <$mt:Include module="HTML Header"$>
+<script type="text/javascript" src="<$mt:PluginStaticWebPath component="CarringtonBlogTheme"$>js/comments.js"></script>
      <body>
           <div id="page">
                <div id="top">
@@ -28,7 +29,7 @@
                                 <$mt:var name="ccount" op="+" value="$tbcount" setvar="ccount"$>
                               <h2 class="h1 comments-title"><$mt:var name="ccount"$> Responses</h2>
                
-                 <mt:setvartemplate name="comment_detail">
+                 <mt:setvartemplate name="comment">
 			
 				<div class="div-comment" id="div-comment-<$mt:CommentID$>">
 				<div id="comment-<$mt:CommentID$>" class="comment even thread-even depth-1 hentry">
@@ -61,57 +62,61 @@
                 		</div>
                  </mt:setvartemplate>
                               
-<$mt:CarringtonPaginateComments setvar="doPaginate"$>
+<$mt:CarringtonPaginateComments setvar="doPagination"$>
 <$mt:CarringtonPaginateCommentsCount setvar="commentsPerPage"$>
 <$mt:var name="numberOfParents" value="0"$>
-<mt:If tag="EntryCommentCount" gt="0">
-<ol class="commentlist hfeed">
-</mt:If>
-<mt:Comments>
-	<mt:Ignore><mt:CommentsHeader><ol class="commentlist hfeed"></mt:CommentsHeader></mt:Ignore>
-	<mt:IfCommentParent>
-	<mt:Else>
-		<mt:If tag="CarringtonPaginateComments" eq="Yes">
-		<mt:If name="numberOfParents" op="%" value="$commentsPerPage" eq="0">
-			<mt:Unless name="numberOfParents" eq="0">
-			</ol>
-			<ol class="commentlist hfeed" style="display:none">
-			</mt:Unless>
-		</mt:If>
-		<$mt:var name="numberOfParents" op="++" setvar="numberOfParents"$>
-		</mt:If>
-		<li class="li-comment" id="li-comment-<$mt:CommentID$>">
-			<$mt:var name="comment_detail"$>
-			<mt:CommentReplies>
-				<mt:CommentsHeader><ul class="children"></mt:CommentsHeader>
-					<li class="li-comment" id="li-comment-<$mt:CommentID$>">
-					<$mt:var name="comment_detail"$>
-					<$mt:CommentRepliesRecurse$>
-					</li>
-				<mt:CommentsFooter></ul></mt:CommentsFooter>
-			</mt:CommentReplies>
-		</li>
-	</mt:IfCommentParent>
-	<mt:Ignore><mt:CommentsFooter></ol></mt:CommentsFooter></mt:Ignore>
-</mt:Comments>
-<mt:If tag="EntryCommentCount" gt="0">
-</ol>
-</mt:If>
+<$mt:var name="pageNum" value="1"$>
 
-			<mt:If tag="CarringtonPaginateComments" eq="Yes"> 
+<mt:Comments>
+        <mt:CommentsHeader><ol class="commentlist"></mt:CommentsHeader>
+        <mt:IfCommentParent>
+        <mt:Else>
+                <mt:If name="doPagination" eq="Yes">
+                        <mt:If name="numberOfParents" op="%" value="$commentsPerPage" eq="0">
+                                <mt:Unless name="numberOfParents" eq="0">
+                                        <$mt:var name="pageNum" op="++" setvar="pageNum"$>
+                                        </ol>
+                                        <ol class="commentlist" style="opacity: 1;display: none;">
+                                </mt:Unless>
+                        </mt:If>
+                        <$mt:var name="numberOfParents" op="++" setvar="numberOfParents"$>
+                </mt:If>
+        <li class="li-comment">
+                <$mt:var name="comment"$>
+                <mt:IfCommentReplies>
+
+                        <mt:CommentReplies>
+                                <mt:CommentsHeader>
+                                <ul class='children'>
+                                </mt:CommentsHeader>
+                                        <li class="li-comment">
+                                                <$mt:var name="comment"$>
+                                                <$mt:CommentRepliesRecurse$>
+                                        </li>
+                                <mt:CommentsFooter>
+                                </ul>
+                                </mt:CommentsFooter>
+                        </mt:CommentReplies>
+
+                </mt:IfCommentReplies>
+        </li>
+        </mt:IfCommentParent>
+        <mt:CommentsFooter></ol></mt:CommentsFooter>
+</mt:Comments>
+
+			<mt:If name="doPagination" eq="Yes"> 
+				<mt:If name="pageNum" ge="2">
                               <p class="comment-pagination">
 				<$mt:var name="block" value="1"$>
-			        <mt:If name="numberOfParents" gt="commentsPerPage">
-			                <a href="<$mt:EntryPermalink$>#comments" class="prev page-numbers">&laquo; Previous</a>
-			        </mt:If>
+			                <a style="border: 1px solid #CECFD1;font-weight:normal;padding:2px 6px" href="<$mt:EntryPermalink$>#comments" class="prev" id="commentsPrev">&laquo; Previous</a>
 			        <mt:For from="0" to="$numberOfParents" step="$commentsPerPage">
 			                <a href="<$mt:EntryPermalink$>#comments" class="page-numbers"><$mt:var name="block"$></a>
+					<mt:If name="__first__"><span class="current" style="font-weight:bold;padding:2px 6px">1</span></mt:If>
 			                <$mt:var name="block" op="++" setvar="block"$>
 			        </mt:For>
-			        <mt:If name="numberOfParents" gt="$commentsPerPage">
-			                <a href="<$mt:EntryPermalink$>#comments" class="next page-numbers">Next &raquo;</a></p>
-			        </mt:If>
+			                <a style="border: 1px solid #CECFD1;font-weight:normal;padding:2px 6px" href="<$mt:EntryPermalink$>#comments" class="next" id="commentsNext">Next &raquo;</a></p>
                               </p>
+				</mt:If>
 			</mt:If>
                                 <mt:If tag="EntryTrackbackCount" gt="0">
                               <h3 class="pings">Continuing the Discussion</h3>

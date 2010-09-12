@@ -24,7 +24,7 @@ template_sets:
                 hint: 'Paginating comments will break up comment listings into groups of a user-defined size.'
                 tag: CarringtonPaginateComments
                 type: radio
-                values: Yes, No
+                values: Yes,No
                 default: No
             comment_pagination_count:
                 label: 'Number of comments per page'

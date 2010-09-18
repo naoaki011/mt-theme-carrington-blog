@@ -7,6 +7,7 @@ description: This plugin provides a Movable Type/Melody version of Carrington Bl
 version: 1.0
 static_version: 3
 plugin_link: http://www.codemonkeyramblings.com
+l10n_class: CarringtonBlogTheme::L10N
 
 template_sets:
     carrington_blog_theme:
